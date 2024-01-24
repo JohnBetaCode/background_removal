@@ -66,10 +66,11 @@ class MPFaceDetection:
                 ]
         """
         results = self.face_detection.process(frame)
+        print(results.detections)
         return [
             {
-                "label_id": result.label_id,
-                "score": None,
+                # "label_id": result.label_id,
+                # "score": result.score,
                 "relative_bounding_box":
                     {
                         "xmin": None,
@@ -78,8 +79,8 @@ class MPFaceDetection:
                         "height": None,
                     },
                 "relative_keypoints": None
-            } for result in results]
-        print(results.detections)
+            } for result in results.detections]
+
 
         if return_tlbr:
             if results.detections:
