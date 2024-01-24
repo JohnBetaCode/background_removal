@@ -68,11 +68,14 @@ class Engine:
         Returns:
             frame: (np.ndarray) - custom processed frame
         """
+        
+        process = {}
+        
         if self.custom_objects:
             for custom_object in self.custom_objects:
-                frame = custom_object(frame)
+                process[custom_object.__class__.__name__] = custom_object(frame)
 
-        return frame
+        return process
 
     def display(self, frame: np.ndarray, webcam: bool = False, waitTime: int = 1) -> bool:
         """Display current frame if self.show = True
