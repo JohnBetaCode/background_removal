@@ -74,7 +74,7 @@ class Engine:
         if self.custom_objects:
             for custom_object in self.custom_objects:
                 process[custom_object.__class__.__name__] = custom_object(frame)
-
+                
         return process
 
     def display(self, frame: np.ndarray, webcam: bool = False, waitTime: int = 1) -> bool:

@@ -65,7 +65,12 @@ class MPFaceDetection:
                 detections: (typing.List) - detections in [Top, Left, Bottom, Right]
                 ]
         """
+
         results = self.face_detection.process(frame)
+
+        if results.detections is None:
+            return []
+        
         return [
             {
                 "label_id": result.label_id,
